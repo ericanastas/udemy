@@ -20,7 +20,11 @@ namespace MyFirstCoreApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseDefaultFiles();
+            DefaultFilesOptions defFileOpt = new DefaultFilesOptions();
+            defFileOpt.DefaultFileNames.Clear();
+            defFileOpt.DefaultFileNames.Add("home.html");
+
+            app.UseDefaultFiles(defFileOpt);
             app.UseStaticFiles();
         }
 
