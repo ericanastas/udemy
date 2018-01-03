@@ -8,9 +8,9 @@ namespace MyFirstCoreApp.Controllers
 {
     public class EmployeeController : Controller
     {
-        public IActionResult Index()
+        public string Index()
         {
-            return View();
+            return "This is from MVC Controller";
         }
     }
 }
