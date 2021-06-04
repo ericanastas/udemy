@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="/assets/style.css" type="text/css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+</head>
+
+<body>
+    <h1>Hello world!</h1>
+
+    <form method="POST" action="/person">
+        First Name: <input type="text" name="firstname" /><br />
+        Last Name: <input type="text" name="lastname" />
+        <input type="submit">
+    </form>
+
+
+    <button id="sendJsonButton">Send JSON Data</button>
+
+    <script>
+        $("#sendJsonButton").on('click', function () {
+            $.ajax({
+                type: "POST",
+                url: "/personjson",
+                data: JSON.stringify({
+                    firstname: "John", lastname: "Smith"
+                }),
+                contentType: "application/json",
+                dataType: 'json'
+            })
+        })
+    </script>
+</body>
+
+</html>
