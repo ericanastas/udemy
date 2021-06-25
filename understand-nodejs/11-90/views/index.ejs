@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="TestApp">
+
+<head>
+    <title>The MEAN Stack</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+</head>
+
+<body ng-controller="MainController as vm">
+
+    <ul>
+        <li ng-repeat="person in vm.people">{{person.name}}</li>
+    </ul>
+    <script>
+        //This is replaced with a JSON array by EJS on the server
+        var clientPeople = <%- JSON.stringify(serverPeople) %>;
+    </script>
+    <script src="/assets/js/app.js"></script>
+</body>
+
+</html>
