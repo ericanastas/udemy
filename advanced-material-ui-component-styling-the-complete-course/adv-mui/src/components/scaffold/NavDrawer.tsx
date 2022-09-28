@@ -1,0 +1,1 @@
+                { text: "Table", route: "/table" },

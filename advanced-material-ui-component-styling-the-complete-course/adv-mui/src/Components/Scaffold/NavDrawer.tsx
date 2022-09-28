@@ -7,9 +7,12 @@ import {
   Typography,
 } from "@mui/material";
 
-import ContactForm from "../Form/ContactForm";
-
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
+
+import ContactForm from "../Form/ContactForm";
+import ContactCardGrid from "../Grid/ContactGridCard";
+import ContactDataGrid from "../DataGrid/ContactDataGrid";
+import ContactTable from "../Table/ContactTable";
 
 export default function NavDrawer() {
   return (
@@ -41,9 +44,9 @@ export default function NavDrawer() {
           <Routes>
             <Route path="/" element={<ContactForm />}></Route>
             <Route path="/form" element={<ContactForm />}></Route>
-            <Route path="/grid" element={<div>grid</div>}></Route>
-            <Route path="/table" element={<div>table</div>}></Route>
-            <Route path="/datagrid" element={<div>datagrid</div>}></Route>
+            <Route path="/grid" element={<ContactCardGrid />}></Route>
+            <Route path="/table" element={<ContactTable />}></Route>
+            <Route path="/datagrid" element={<ContactDataGrid />}></Route>
           </Routes>
         </main>
       </BrowserRouter>
