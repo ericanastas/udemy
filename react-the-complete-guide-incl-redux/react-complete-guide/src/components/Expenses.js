@@ -1,11 +1,12 @@
 import ExpenseItem from "./ExpenseItem"
+import Card from "./Card";
 
 function Expenses(props) {
 
     return (
-        <div className="expenses">
-            {props.expenses.map(item => { return (<ExpenseItem title={item.title} date={item.date} amount={item.amount} />) })}
-        </div>
+        <Card className="expenses">
+            {props.expenses.map(item => { return (<ExpenseItem key={item.id} title={item.title} date={item.date} amount={item.amount} />) })}
+        </Card>
     )
 
 }
