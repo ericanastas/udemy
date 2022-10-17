@@ -4,6 +4,10 @@ import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
 
+    function addExpenseHandler(newExpense) {
+        console.log(newExpense)
+    }
+
 
 
     const expenses = [
@@ -32,7 +36,7 @@ function App() {
         <div>
             <h2>Let's get started!</h2>
             <p>this is also visible</p>
-            <NewExpense />
+            <NewExpense onAddExpense={addExpenseHandler} />
             <Expenses expenses={expenses} />
         </div >
     );
