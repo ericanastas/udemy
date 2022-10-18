@@ -23,8 +23,9 @@ function Expenses(props) {
 
 
 
-            {filteredExpenses.length === 0 ?
-                <p>No expenses found!</p> :
+            {filteredExpenses.length === 0 && <p>No expenses found!</p>}
+
+            {filteredExpenses.length !== 0 &&
                 filteredExpenses.map(item => { return (<ExpenseItem key={item.id} title={item.title} date={item.date} amount={item.amount} />) })}
 
         </Card>
