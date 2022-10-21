@@ -13,10 +13,24 @@ const Login = (props) => {
 
     useEffect(() => {
 
-        //this runs only when the dependencies: enteredEmail, or enteredPassword changes
-        setFormIsValid(
-            enteredEmail.includes('@') && enteredPassword.trim().length > 6
-        );
+        //Starts a timer after which the form validty is checked
+        const timer = setTimeout(() => {
+
+            console.log("CHECKING FORM VALIDITY");
+            setFormIsValid(
+                enteredEmail.includes('@') && enteredPassword.trim().length > 6
+            );
+        }, 500);
+
+        return () => {
+            //Returned function is called before subsequent calls to the effect function
+            console.log("CLEAN UP");
+
+            //This cancels the previous timer
+            clearTimeout(timer);
+        };
+
+        //Use effect function is only called when enteredEmail or enteredPassword changes
     }, [enteredEmail, enteredPassword]);
 
     const emailChangeHandler = (event) => {
