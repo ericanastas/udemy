@@ -40,3 +40,24 @@ it('should yield a correct sum if an array of numeric string values is provided'
     expect(result).toBe(expectedSum);
 
 })
+
+it('returns zero if an empty array is provided', () => {    //Arrange
+    let numbers = [];
+
+    //Act
+    let result = add(numbers);
+
+    //Assert
+    let expectedSum = numbers.reduce((prevVal, curVal) => +prevVal + +curVal, 0);
+    expect(result).toBe(0);
+});
+
+it('should throw error if no value is provided', () => {    //Arrange
+
+    const resultFn = () => {
+        add();
+    };
+
+    //Act
+    expect(resultFn).toThrow();
+});
