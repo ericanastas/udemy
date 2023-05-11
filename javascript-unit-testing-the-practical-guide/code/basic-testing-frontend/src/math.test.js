@@ -59,5 +59,17 @@ it('should throw error if no value is provided', () => {    //Arrange
     };
 
     //Act
-    expect(resultFn).toThrow();
+    expect(resultFn).toThrow(/is not iterable/);
 });
+
+
+it('should throw error if passed multiple arguments', () => {    //Arrange
+
+    const resultFn = () => {
+        add(1, 2);
+    };
+
+    //Act
+    expect(resultFn).toThrow(/is not iterable/);
+});
+
