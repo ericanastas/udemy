@@ -6,3 +6,16 @@ export function add(numbers) {
     }
     return sum;
 }
+
+export function calcuateResult(numberValues) {
+
+    try {
+        const numbers = [];
+
+        result = add(numbers).toString();
+    } catch (error) {
+        result = error.message;
+    }
+
+
+}
