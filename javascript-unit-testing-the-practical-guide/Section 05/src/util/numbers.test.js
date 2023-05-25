@@ -1,30 +1,35 @@
-import { it, expect } from 'vitest';
+import { it, expect, describe } from 'vitest';
 
-import { transformToNumber } from './numbers';
+import { transformToNumber, cleanNumbers } from './numbers';
 
-it('should transform a string number to a number of type number', () => {
-  const input = '1';
 
-  const result = transformToNumber(input);
+describe("transformToNumber()", () => {
+    it('should transform a string number to a number of type number', () => {
+        const input = '1';
 
-  expect(result).toBeTypeOf('number');
-});
+        const result = transformToNumber(input);
 
-it('should transform a string number to a number of type number', () => {
-  const input = '1';
+        expect(result).toBeTypeOf('number');
+    });
 
-  const result = transformToNumber(input);
+    it('should transform a string number to a number of type number', () => {
+        const input = '1';
 
-  expect(result).toBe(+input);
-});
+        const result = transformToNumber(input);
 
-it('should yield NaN for non-transformable values', () => {
-  const input = 'invalid';
-  const input2 = {};
+        expect(result).toBe(+input);
+    });
 
-  const result = transformToNumber(input);
-  const result2 = transformToNumber(input2);
+    it('should yield NaN for non-transformable values', () => {
+        const input = 'invalid';
+        const input2 = {};
 
-  expect(result).toBeNaN();
-  expect(result2).toBeNaN();
+        const result = transformToNumber(input);
+        const result2 = transformToNumber(input2);
+
+        expect(result).toBeNaN();
+        expect(result2).toBeNaN();
+    });
+
+
 });
