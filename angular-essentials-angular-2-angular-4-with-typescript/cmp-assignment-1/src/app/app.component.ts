@@ -37,6 +37,7 @@ import { Component } from "@angular/core";
         </h2>
       </li>
     </ul>
+    <app-dashboard></app-dashboard>
   `,
   styles: [],
 })
