@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
     <p>I'm the user component</p>`,
 })
 export class UserComponent {
-  name = 'John Smith';
+  @Input()
+  name = 'Default User Component Name';
 }
