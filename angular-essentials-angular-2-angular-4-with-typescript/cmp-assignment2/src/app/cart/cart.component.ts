@@ -5,10 +5,14 @@ import { Component, Input } from "@angular/core";
   template: ` <p>Cart</p>
     <ol>
       <li *ngFor="let item of items">{{ item }}</li>
+    </ol>
+    <input type="text" [(ngModel)]="newItem" />
     </ol>`,
   styles: [],
 })
 export class CartComponent {
   @Input()
   items: string[] = [];
+  newItem: string = "";
+
 }
