@@ -1,20 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-cart',
-  template: `
-    <p>
-      cart works!
-    </p>
-  `,
-  styles: [
-  ]
+  selector: "app-cart",
+  template: ` <p>Cart</p>
+    <ol>
+      <li *ngFor="let item of items">{{ item }}</li>
+    </ol>`,
+  styles: [],
 })
-export class CartComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class CartComponent {
+  @Input()
+  items: string[] = [];
 }
