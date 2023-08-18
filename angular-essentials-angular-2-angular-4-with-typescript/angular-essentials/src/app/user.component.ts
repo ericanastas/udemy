@@ -1,12 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-user',
-  template: `<input type="text" [(ngModel)]="name" />
+  template: ` <input type="text" (input)="onInput($event)" [value]="name" />
+    <!-- <input type="text" [(ngModel)]="name" /> -->
     <p>Hello {{ name }}</p>
     <p>I'm the user component</p>`,
 })
 export class UserComponent {
   @Input()
-  name = 'Default User Component Name';
+  name: string = 'Default User Component Name';
+
+  @Output()
+  nameChanged = new EventEmitter<string>();
+
+  onInput(event: any) {
+    this.nameChanged.emit(event.target.value);
+  }
 }
