@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, EventEmitter, Output } from "@angular/core";
 
 @Component({
   selector: "app-cart",
@@ -7,7 +7,7 @@ import { Component, Input } from "@angular/core";
       <li *ngFor="let item of items">{{ item }}</li>
     </ol>
     <input type="text" [(ngModel)]="newItem" />
-    </ol>`,
+    <button (click)="onAddItemClick()">Add Item</button>`,
   styles: [],
 })
 export class CartComponent {
@@ -15,4 +15,11 @@ export class CartComponent {
   items: string[] = [];
   newItem: string = "";
 
+  @Output()
+  itemAdded = new EventEmitter<string>();
+
+  onAddItemClick() {
+    this.itemAdded.emit(this.newItem);
+    this.newItem = "";
+  }
 }

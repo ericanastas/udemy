@@ -38,10 +38,16 @@ import { Component } from "@angular/core";
       </li>
     </ul>
 
-    <app-cart [items]="['Apples', 'Bananas', 'Cherries']"> </app-cart>
+    <app-cart [items]="items" (itemAdded)="onItemAdded($event)"> </app-cart>
   `,
   styles: [],
 })
 export class AppComponent {
   title = "cmp-assignment2";
+
+  items: string[] = ["Apples", "Bananas", "Cherries"];
+
+  onItemAdded(newItem: string) {
+    this.items.push(newItem);
+  }
 }
