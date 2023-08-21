@@ -10,5 +10,5 @@
             <a class="nav-link" [ngClass]="{active: chosenList === 'dark' }" (click)="onChose('dark')">Dark</a>
         </li>
     </ul>
-    <app-list (sideAssigned)="onSideAssigned($event)" [characters]="getCharacters()"></app-list>
+    <app-list [characters]="getCharacters()"></app-list>
 </div>
