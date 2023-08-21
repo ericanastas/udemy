@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { StarWarsService } from "../star-wars.services";
 
 @Component({
@@ -17,9 +17,6 @@ export class ItemComponent implements OnInit {
   character = { name: "sample name", side: "light" };
 
   ngOnInit(): void {}
-
-  @Output()
-  sideAssigned = new EventEmitter<{ name: string; side: string }>();
 
   onAssign(side: string) {
     this.starWarsService.onSideAssigned({
