@@ -1,20 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-item',
-  template: `
-    <p>
-      item works!
-    </p>
-  `,
-  styles: [
-  ]
+  selector: "app-item",
+  templateUrl: "./item.component.html",
+  styleUrls: ["./item.component.css"],
+  styles: [],
 })
 export class ItemComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  @Input()
+  character = { name: "sample name", side: "light" };
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
