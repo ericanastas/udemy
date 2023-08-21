@@ -9,8 +9,8 @@ export class TabsComponent implements OnInit {
   constructor() {}
 
   characters = [
-    { name: "Luke Skywalker", side: "" },
-    { name: "Darth Vader", side: "" },
+    { name: "Luke Skywalker", side: "light" },
+    { name: "Darth Vader", side: "dark" },
   ];
 
   chosenList = "all";

@@ -2,7 +2,7 @@
 
     <h4 class="list-group-item-heading">{{ character.name }}</h4>
     <div>
-        <button class="btn btn-primary">Light</button>
-        <button class="btn btn-danger">Dark</button>
+        <button class="btn btn-primary" (click)="onAssign('light')">Light</button>
+        <button class="btn btn-danger" (click)="onAssign('dark')">Dark</button>
     </div>
 </li>

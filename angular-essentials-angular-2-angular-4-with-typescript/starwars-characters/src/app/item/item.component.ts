@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, Output } from "@angular/core";
 
 @Component({
   selector: "app-item",
@@ -13,4 +13,8 @@ export class ItemComponent implements OnInit {
   character = { name: "sample name", side: "light" };
 
   ngOnInit(): void {}
+
+  onAssign(side: string) {
+    this.character.side = side;
+  }
 }
