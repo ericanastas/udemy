@@ -9,5 +9,11 @@ import { Component, OnInit } from "@angular/core";
 export class CreateCharacterComponent implements OnInit {
   constructor() {}
 
+  availableSides = [
+    { display: "None", value: "" },
+    { display: "Dark Side", value: "dark" },
+    { display: "Light Side", value: "light" },
+  ];
+
   ngOnInit(): void {}
 }
