@@ -27,4 +27,9 @@ export class StarWarsService {
     this.characters[pos].side = character.side;
     this.logService.writeLog(`Change side: ${JSON.stringify(character)}`);
   }
+
+  addCharacter(name: string, side: string) {
+    let newChar = { name, side };
+    this.characters.push(newChar);
+  }
 }
