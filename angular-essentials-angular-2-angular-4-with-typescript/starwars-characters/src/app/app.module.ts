@@ -9,12 +9,19 @@ import { StarWarsService } from "./star-wars.services";
 import { LogService } from "./log.service";
 import { CreateCharacterComponent } from "./create-character/create-character.component";
 import { HeaderComponent } from "./header/header.component";
-import { RouterModule } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 
-const routes = [
-  { path: "", component: TabsComponent },
+const routes: Routes = [
+  {
+    path: "characters",
+    component: TabsComponent,
+    children: [
+      { path: "", pathMatch: "full", redirectTo: "all" },
+      { path: ":side", component: ListComponent },
+    ],
+  },
   { path: "new-character", component: CreateCharacterComponent },
-  { path: "**", redirectTo: "/" },
+  { path: "**", redirectTo: "/characters/all" },
 ];
 
 @NgModule({
