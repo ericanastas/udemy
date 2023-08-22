@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { Subscription } from "rxjs";
 import { StarWarsService } from "../star-wars.services";
 
 @Component({
@@ -8,7 +9,7 @@ import { StarWarsService } from "../star-wars.services";
   styleUrls: ["./list.component.css"],
   styles: [],
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
   constructor(
     activatedRoute: ActivatedRoute,
     starWarsService: StarWarsService
@@ -20,11 +21,24 @@ export class ListComponent implements OnInit {
   starWarsService: StarWarsService;
   activatedRoute: ActivatedRoute;
 
+  loadedSide: string = "all";
+
   characters: any[] = [];
+
+  subscription?: Subscription;
+
+  ngOnDestroy() {
+    this.subscription?.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      this.characters = this.starWarsService.getCharacters(params["side"]);
+      this.loadedSide = params["side"];
+      this.characters = this.starWarsService.getCharacters(this.loadedSide);
+    });
+
+    this.subscription = this.starWarsService.charactersChanged.subscribe(() => {
+      this.characters = this.starWarsService.getCharacters(this.loadedSide);
     });
   }
 }

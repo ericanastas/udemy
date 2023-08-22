@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 import { LogService } from "./log.service";
 
 @Injectable()
@@ -9,6 +10,8 @@ export class StarWarsService {
   ];
 
   private logService: LogService;
+
+  charactersChanged = new Subject<void>();
 
   constructor(logService: LogService) {
     this.logService = logService;
@@ -26,6 +29,7 @@ export class StarWarsService {
     const pos = this.characters.findIndex((c) => c.name === character.name);
     this.characters[pos].side = character.side;
     this.logService.writeLog(`Change side: ${JSON.stringify(character)}`);
+    this.charactersChanged.next();
   }
 
   addCharacter(name: string, side: string) {
