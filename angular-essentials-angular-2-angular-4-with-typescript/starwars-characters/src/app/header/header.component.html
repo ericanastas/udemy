@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="#">Star Wars</a>
     <div class="navbar-nav">
-        <a class="nav-item nav-link" href="#">Characters</a>
-        <a class="nav-item nav-link" href="#">New Character</a>
+        <a class="nav-item nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active"
+            routerLink="/">Characters</a>
+        <a class="nav-item nav-link" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active"
+            routerLink="/new-character">New Character</a>
     </div>
 </nav>
