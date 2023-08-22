@@ -8,7 +8,8 @@ import { ItemComponent } from "./item/item.component";
 import { StarWarsService } from "./star-wars.services";
 import { LogService } from "./log.service";
 import { CreateCharacterComponent } from "./create-character/create-character.component";
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from "./header/header.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { HeaderComponent } from './header/header.component';
     CreateCharacterComponent,
     HeaderComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, RouterModule],
   providers: [StarWarsService, LogService],
   bootstrap: [AppComponent],
 })
