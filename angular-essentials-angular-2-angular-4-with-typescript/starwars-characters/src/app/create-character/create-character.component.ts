@@ -21,8 +21,16 @@ export class CreateCharacterComponent implements OnInit {
   ];
 
   onSubmit(form: NgForm) {
-    console.log(form);
-    this.starWarsService.addCharacter(form.value.name, form.value.side);
+    if (form.invalid) return;
+    else if (
+      this.starWarsService
+        .getCharacters("all")
+        .some((c) => c.name === form.value.name)
+    )
+      return;
+    else {
+      this.starWarsService.addCharacter(form.value.name, form.value.side);
+    }
   }
 
   ngOnInit(): void {}
