@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-create-character",
@@ -14,6 +15,10 @@ export class CreateCharacterComponent implements OnInit {
     { display: "Dark Side", value: "dark" },
     { display: "Light Side", value: "light" },
   ];
+
+  onSubmit(form: NgForm) {
+    console.log(form);
+  }
 
   ngOnInit(): void {}
 }
