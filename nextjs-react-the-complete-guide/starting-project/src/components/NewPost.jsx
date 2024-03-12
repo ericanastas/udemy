@@ -16,6 +16,8 @@ function NewPost(props) {
     event.preventDefault();
     const postData = { author: enteredAuthor, body: enteredBody };
     props.onAddPost(postData);
+
+    props.onCancel();
   }
 
   return (

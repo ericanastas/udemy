@@ -21,6 +21,9 @@ function PostList(props) {
 
       <ul className={classes.posts}>
         <Post author="Bob" body="I like to code" />
+        {posts.map((post, index) => (
+          <Post key={index} author={post.author} body={post.body} />
+        ))}
       </ul>
     </>
   );
