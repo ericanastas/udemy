@@ -1,41 +1,18 @@
 import classes from "./NewPost.module.css";
 import Modal from "../components/Modal";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Form, Link, redirect } from "react-router-dom";
 
 function NewPost(props) {
-  const [enteredBody, setEnteredBody] = useState("inital body");
-  const [enteredAuthor, setEnteredAuthor] = useState("inital author");
-
-  function bodyChangeHandler(event) {
-    setEnteredBody(event.target.value);
-  }
-  function authorChangeHandler(event) {
-    setEnteredAuthor(event.target.value);
-  }
-
-  function submitHandler(event) {
-    event.preventDefault();
-    const postData = { author: enteredAuthor, body: enteredBody };
-    props.onAddPost(postData);
-    props.onCancel();
-  }
-
   return (
     <Modal>
-      <form className={classes.form} onSubmit={submitHandler}>
+      <Form method="post" className={classes.form}>
         <p>
           <label htmlFor="body">Text</label>
-          <textarea id="body" required rows={3} onChange={bodyChangeHandler} />
+          <textarea id="body" name="body" required rows={3} />
         </p>
         <p>
           <label htmlFor="name">Your name</label>
-          <input
-            type="text"
-            id="name"
-            required
-            onChange={authorChangeHandler}
-          />
+          <input type="text" name="author" id="name" required />
         </p>
         <p className={classes.actions}>
           <Link className={classes.actions} type="button" to="..">
@@ -43,9 +20,22 @@ function NewPost(props) {
           </Link>
           <button>Submit</button>
         </p>
-      </form>
+      </Form>
     </Modal>
   );
 }
 
 export default NewPost;
+
+export function action(data) {
+  return data.request
+    .formData()
+    .then((postData) => Object.fromEntries(postData))
+    .then((postData) =>
+      fetch("http://localhost:8080/posts", {
+        method: "POST",
+        body: JSON.stringify(postData),
+        headers: { "content-type": "application/json" },
+      }).then(() => redirect("/"))
+    );
+}
