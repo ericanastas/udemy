@@ -13,16 +13,11 @@ function PostList(props) {
   }
   const [enteredBody, setEnteredBody] = useState("inital body");
   const [enteredAuthor, setEnteredAuthor] = useState("inital author");
-  const [modalIsVisible, setModalIsVisible] = useState(true);
-
-  function hideModalHandler() {
-    setModalIsVisible(false);
-  }
 
   return (
     <>
-      {modalIsVisible && (
-        <Modal onClose={hideModalHandler}>
+      {props.isPosting && (
+        <Modal onClose={props.onStopPosting}>
           <NewPost
             onBodyChange={bodyChangeHandler}
             onAuthorChange={authorChangeHandler}
