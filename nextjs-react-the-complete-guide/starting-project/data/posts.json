@@ -1,9 +1,1 @@
-{
-  "posts": [
-    {
-      "body": "This course is hopefully very helpful to you!",
-      "author": "Maximilian",
-      "id": "post-1"
-    }
-  ]
-}
+{"posts":[{"author":"fasdf","body":"daf","id":"0.7475755583162695"},{"author":"asdf","body":"asdf","id":"0.8086747886725394"},{"author":"asdf","body":"asdf","id":"0.24714307593323448"},{"author":"asdf","body":"asdf","id":"0.2401262864288778"},{"body":"This course is hopefully very helpful to you!","author":"Maximilian","id":"post-1"}]}

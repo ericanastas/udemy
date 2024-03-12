@@ -6,11 +6,16 @@ import { useState, useEffect } from "react";
 
 function PostList(props) {
   const [posts, setPosts] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
+    setIsFetching(true);
     fetch("http://localhost:8080/posts")
       .then((res) => res.json())
-      .then((postsData) => setPosts(postsData.posts));
+      .then((postsData) => {
+        setPosts(postsData.posts);
+        setIsFetching(false);
+      });
   }, []);
 
   function addPostHandler(post) {
@@ -19,8 +24,6 @@ function PostList(props) {
       body: JSON.stringify(post),
       headers: { "content-type": "application/json" },
     });
-
-    //setPosts((existingPosts) => [post, ...existingPosts]);
   }
 
   return (
@@ -32,14 +35,15 @@ function PostList(props) {
       )}
 
       <ul className={classes.posts}>
-        {posts.length > 0 ? (
+        {!isFetching &&
+          posts.length > 0 &&
           posts.map((post, index) => (
             <Post key={index} author={post.author} body={post.body} />
-          ))
-        ) : (
-          <p>No posts yet!</p>
-        )}
+          ))}
       </ul>
+      {!isFetching && posts.length == 0 && <p>No posts yet!</p>}
+
+      {isFetching && <p>Loading posts...</p>}
     </>
   );
 }
