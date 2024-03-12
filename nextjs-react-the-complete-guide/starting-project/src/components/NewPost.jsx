@@ -15,7 +15,7 @@ function NewPost(props) {
   function submitHandler(event) {
     event.preventDefault();
     const postData = { author: enteredAuthor, body: enteredBody };
-    console.log(postData);
+    props.onAddPost(postData);
   }
 
   return (
