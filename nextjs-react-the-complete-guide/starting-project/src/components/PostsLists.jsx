@@ -8,7 +8,13 @@ function PostList(props) {
   const [posts, setPosts] = useState([]);
 
   function addPostHandler(post) {
-    setPosts((existingPosts) => [post, ...existingPosts]);
+    fetch("http://localhost:8080/posts", {
+      method: "POST",
+      body: JSON.stringify(post),
+      headers: { "content-type": "application/json" },
+    });
+
+    //setPosts((existingPosts) => [post, ...existingPosts]);
   }
 
   return (
